@@ -1,4 +1,4 @@
-## Customer Insights & Product Engagement Analysis
+# Customer Insights & Product Engagement Analysis
 
 A Financial Technology company seeks to extract meaningful insights from data in order to inform their Operations and Finance Teams using a dataset containing the following tables:
 
@@ -9,7 +9,7 @@ A Financial Technology company seeks to extract meaningful insights from data in
 
 The following questions were to be answered:
 
-### High-Value Customers with Multiple Products
+## High-Value Customers with Multiple Products
 
 **Scenario:** The business wants to identify customers who have both a savings and an investment plan (cross-selling opportunity).
 
@@ -38,7 +38,7 @@ This approach helped reduce complexity, ensured accuracy, and made the results e
 
 
 
-### Transaction Frequency Analysis
+## Transaction Frequency Analysis
 
 **Scenario:** The finance team wants to analyze how often customers transact to segment them (e.g., frequent vs. occasional users).
 
@@ -65,7 +65,7 @@ All these I managed with the help of multiple subqueries.
 ---
 
 
-### Account Inactivity Alert
+## Account Inactivity Alert
 
 **Scenario:** The ops team wants to flag accounts with no inflow transactions for over one year.
 
@@ -89,7 +89,7 @@ Breaking the query into parts and carefully applying time-based logic helped ens
 ---
 
 
-### Customer Lifetime Value (CLV) Estimation
+## Customer Lifetime Value (CLV) Estimation
 
 **Scenario**: Marketing wants to estimate CLV based on account tenure and transaction volume (simplified model).
 
