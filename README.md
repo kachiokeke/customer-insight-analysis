@@ -2,10 +2,10 @@
 
 A Financial Technology company seeks to extract meaningful insights from data in order to inform their Operations and Finance Teams using a dataset containing the following tables:
 
-- users_customuser: customer demographic and contact information
-- savings_savingsaccount: records of deposit transactions
-- plans_plan: records of plans created by customers
-- withdrawals_withdrawal:  records of withdrawal transactions
+- `users_customuser`: customer demographic and contact information
+- `savings_savingsaccount`: records of deposit transactions
+- `plans_plan`: records of plans created by customers
+- `withdrawals_withdrawal`:  records of withdrawal transactions
 
 The following questions were to be answered:
 
@@ -17,9 +17,9 @@ The following questions were to be answered:
 
 **Tables to be used:**
 
-users_customuser
-savings_savingsaccount
-plans_plan
+- `users_customuser`
+- `savings_savingsaccount`
+- `plans_plan`
 
 **Solution**
 
@@ -49,8 +49,8 @@ This approach helped reduce complexity, ensured accuracy, and made the results e
 "Low Frequency" (≤2 transactions/month)
 
 **Tables:**
-users_customuser
-savings_savingsaccount
+- `users_customuser`
+- `savings_savingsaccount`
 
 **Solution**:
 
@@ -72,12 +72,12 @@ All these I managed with the help of multiple subqueries.
 **Task:** Find all active accounts (savings or investments) with no transactions in the last 1 year (365 days).
 
 **Tables:**
-plans_plan
-savings_savingsaccount
+- `plans_plan`
+- `savings_savingsaccount`
 
 **Solution**:
 
-To begin, I first needed to clearly define what counts as an "active account" and what qualifies as "no transactions in the last 365 days." The data was spread across two main tables: plans_plan, which tracks savings and investment plans, and savings_savingsaccount, which records financial transactions linked to those plans.
+To begin, I first needed to clearly define what counts as an "active account" and what qualifies as "no transactions in the last 365 days." The data was spread across two main tables: `plans_plan`, which tracks savings and investment plans, and `savings_savingsaccount`, which records financial transactions linked to those plans.
 
 I joined these tables using the shared owner_id field to associate each plan with its corresponding transaction records. Then, for each account, I checked the most recent transaction date using the MAX(transaction_date) function. The key step was to compare this latest transaction date with the current date to calculate if the difference exceeded 365 days.
 
@@ -95,22 +95,23 @@ Breaking the query into parts and carefully applying time-based logic helped ens
 
 **Task**: For each customer, assuming the profit_per_transaction is 0.1% of the transaction value, calculate:
 
-Account tenure (months since signup)
-Total transactions
-Estimated CLV (Assume: CLV = (total_transactions / tenure) * 12 * avg_profit_per_transaction)
-Order by estimated CLV from highest to lowest
+- Account tenure (months since signup)
+- Total transactions
+- Estimated CLV
+  $`(Assume: CLV = (total_transactions / tenure) * 12 * avg_profit_per_transaction)`$
+- Order by estimated CLV from highest to lowest
 
 **Tables**:
-users_customuser
-savings_savingsaccount
+- `users_customuser`
+- `savings_savingsaccount`
 
 **Solution**:
 
 The objective of this analysis was to help the marketing team estimate Customer Lifetime Value (CLV) by evaluating customer account tenure and transaction behavior over time.
 
-To begin, I needed to understand the formula being used and what each part required in terms of data. This involved combining user signup dates with transaction records across two tables.
+To begin, I needed to understand the formula being used and what each part required. This involved combining user signup dates with transaction records across two tables.
 
-I first joined the user and transaction tables in order to access each customer’s signup date and transaction history. From there, I calculated the account tenure in months, the total number of transactions, and the average transaction value. Since the model assumed profit per transaction was 0.1% of the transaction amount, I applied that rate to estimate profit.
+I first joined the `users_customuser` and `savings_savingsaccount` tables in order to access each customer’s signup date and transaction history. From there, I calculated the account tenure in months, the total number of transactions, and the average transaction value. Since the model assumed profit per transaction was 0.1% of the transaction amount, I applied that rate to estimate profit.
 
 Once I had these values, I applied the CLV formula, which multiplies average monthly profit by 12 to get an annual estimate.
 
