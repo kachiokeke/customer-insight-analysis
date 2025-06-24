@@ -44,9 +44,9 @@ This approach helped reduce complexity, ensured accuracy, and made the results e
 
 **Task:** Calculate the average number of transactions per customer per month and categorize them:
 
-"High Frequency" (≥10 transactions/month)
-"Medium Frequency" (3-9 transactions/month)
-"Low Frequency" (≤2 transactions/month)
+- "High Frequency" (≥10 transactions/month)
+- "Medium Frequency" (3-9 transactions/month)
+- "Low Frequency" (≤2 transactions/month)
 
 **Tables:**
 - `users_customuser`
